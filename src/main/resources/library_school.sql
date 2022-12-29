@@ -47,5 +47,9 @@ FOREIGN KEY (reader_id) REFERENCES library_school.reader(reader_id)
 );
 
 
+CREATE TABLE TEST (
+TEST_COLUMN int
+);
+
 
 
