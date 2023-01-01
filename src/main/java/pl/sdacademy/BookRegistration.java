@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name="book_registration")
 public class BookRegistration {
 
     @Id
@@ -28,11 +29,11 @@ public class BookRegistration {
 
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "book")
+    @JoinColumn(name = "book_id")
     private Book book;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "reader")
+    @JoinColumn(name = "reader_id")
     private Reader reader;
 
     public Integer getBookRecordId() {
