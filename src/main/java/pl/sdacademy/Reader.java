@@ -63,6 +63,14 @@ public class Reader {
         this.identityNumber = identityNumber;
     }
 
+    public BookRegistration getBookRegistration() {
+        return bookRegistration;
+    }
+
+    public void setBookRegistration(BookRegistration bookRegistration) {
+        this.bookRegistration = bookRegistration;
+    }
+
     @Override
     public String toString() {
         return "Reader: " +

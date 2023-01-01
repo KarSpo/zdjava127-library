@@ -41,6 +41,14 @@ public class Publisher {
         this.publisherName = publisherName;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
     @Override
     public String toString() {
         return "Publisher " +
