@@ -27,7 +27,7 @@ CREATE TABLE book (
   last_name         VARCHAR(100) NOT NULL,
   identity_number   VARCHAR(11) NOT NULL UNIQUE,
   PRIMARY KEY(reader_id));
-  
+
   CREATE TABLE books_authors (
 author_id int,
 book_id int,
@@ -45,7 +45,5 @@ PRIMARY KEY (book_record_id),
 FOREIGN KEY (book_id) REFERENCES library_school.book(book_id),
 FOREIGN KEY (reader_id) REFERENCES library_school.reader(reader_id)
 );
-
-
 
 
