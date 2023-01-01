@@ -28,6 +28,22 @@ CREATE TABLE book (
   identity_number   VARCHAR(11) NOT NULL UNIQUE,
   PRIMARY KEY(reader_id));
 
+  CREATE TABLE books_authors (
+author_id int,
+book_id int,
+FOREIGN KEY (author_id) REFERENCES library_school.author(author_id),
+FOREIGN KEY (book_id) REFERENCES library_school.book(book_id)
+);
 
+CREATE TABLE book_registration (
+book_record_id int,
+book_id int,
+borrowDate date,
+reader_id int,
+registration_number varchar(15),
+PRIMARY KEY (book_record_id),
+FOREIGN KEY (book_id) REFERENCES library_school.book(book_id),
+FOREIGN KEY (reader_id) REFERENCES library_school.reader(reader_id)
+);
 
 
