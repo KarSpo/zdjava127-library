@@ -6,11 +6,8 @@ import pl.sdacademy.ui.ConsoleInterface;
 public class Main {
     public static void main(String[] args) {
 
-        ConsoleInterface consoleInterface = new ConsoleInterface();
-        consoleInterface.printInterface();
-
+    ConsoleInterface consoleInterface= new ConsoleInterface();
+    consoleInterface.chooseOption();
 
     }
-
-
 }

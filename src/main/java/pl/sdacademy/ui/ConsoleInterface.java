@@ -1,26 +1,37 @@
 package pl.sdacademy.ui;
 
-import pl.sdacademy.Book;
-import pl.sdacademy.HibernateUtil;
-
-import javax.persistence.EntityManager;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ConsoleInterface {
-    public void printInterface() {
-        Scanner scanner = new Scanner(System.in);
-        String greetings = "Witaj w programie Biblioteka";
-        System.out.println(greetings);
-        System.out.println("Czego szukasz? Wpisz tytul ksiazki: ");
-        String lookingTitle = scanner.nextLine();
-        EntityManager entityManager = HibernateUtil.getSessionFactory().createEntityManager();
-        entityManager.getTransaction().begin();
-        Book book = entityManager.createQuery("from Book b where b.title= :t", Book.class)
-                .setParameter("t", lookingTitle)
-                .getSingleResult();
 
-        System.out.println(book);
-        entityManager.getTransaction().commit();
+    public void chooseOption() {
+
+        Scanner scanner = new Scanner(System.in);
+        String greetings = "Witaj w aplikacji Biblioteka. Wybierz odpowiednia cyfre:  \n" +
+                "1 - Sprawdz, czy ksiazka istnieje w systemie \n" +
+                "2 - TU DODAJEMY KOLEJNE FUNKCJONALNOSCI";
+
+        System.out.println(greetings);
+        String userSelection = scanner.nextLine();
+        Pattern templateRegex = Pattern.compile("\\d+");
+        Matcher matcher = templateRegex.matcher(userSelection);
+
+        if (matcher.matches()) {
+            int number = Integer.valueOf(userSelection);
+            if (number == 1) {
+                BookFinder bookFinder = new BookFinder();
+                bookFinder.isBookExists();
+            } else {
+                System.out.println("Nierozpoznana cyfra.");
+            }
+        } else {
+            System.out.println("Wprowadzono niepoprawne dane.");
+        }
+
     }
+
+
 }
 
