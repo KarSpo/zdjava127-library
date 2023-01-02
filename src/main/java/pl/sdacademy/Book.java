@@ -23,10 +23,10 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String ISBN, Publisher publisher) {
+    public Book(String title, String ISBN) {
         this.title = title;
         this.ISBN = ISBN;
-        this.publisher = publisher;
+
     }
 
     @OneToOne(mappedBy = "book",
@@ -104,9 +104,4 @@ public class Book {
                 ", title= '" + title + '\'' +
                 ", ISBN=' " + ISBN + '\'';
     }
-
-
-
-
-
 }
