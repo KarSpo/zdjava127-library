@@ -11,7 +11,8 @@ public class ConsoleInterface {
         Scanner scanner = new Scanner(System.in);
         String greetings = "Witaj w aplikacji Biblioteka. Wybierz odpowiednia cyfre:  \n" +
                 "1 - Sprawdz, czy ksiazka istnieje w systemie \n" +
-                "2 - TU DODAJEMY KOLEJNE FUNKCJONALNOSCI";
+                "2 - Skasuj ksiazke po tytule \n" +
+                "3 - TU DODAJEMY KOLEJNE FUNKCJONALNOSCI";
 
         System.out.println(greetings);
         String userSelection = scanner.nextLine();
@@ -23,6 +24,9 @@ public class ConsoleInterface {
             if (number == 1) {
                 BookFinder bookFinder = new BookFinder();
                 bookFinder.isBookExists();
+            } else if (number == 2) {
+                BookFinder bookFinder = new BookFinder();
+                bookFinder.deleteBook();
             } else {
                 System.out.println("Nierozpoznana cyfra.");
             }
