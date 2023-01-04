@@ -27,4 +27,17 @@ public class BookFinder {
 
     }
 
+    public void deleteBook() {
+        System.out.println("Wpisz tytul ksiazki do skasowania:");
+        Scanner scanner = new Scanner(System.in);
+        String titleToDelete = scanner.nextLine();
+        EntityManager entityManager = HibernateUtil.getSessionFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        entityManager.createQuery("DELETE from Book b where b.title= :t")
+                .setParameter("t", titleToDelete).executeUpdate();
+
+        entityManager.getTransaction().commit();
+        HibernateUtil.shutdown();
+    }
 }
