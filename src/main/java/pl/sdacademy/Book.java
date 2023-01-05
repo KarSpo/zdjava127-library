@@ -30,9 +30,14 @@ public class Book {
 
     }
 
-    @OneToOne(mappedBy = "book",
-            fetch = FetchType.EAGER)
+//    @OneToOne(mappedBy = "book",
+//            fetch = FetchType.EAGER)
+//    private BookRegistration bookRegistration;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "bookRegistration")
     private BookRegistration bookRegistration;
+
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")
@@ -98,15 +103,25 @@ public class Book {
         this.authors = authors;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Book " +
+//                "bookId= " + bookId +
+//                ", title= " + title +
+//                ", ISBN= " + ISBN +
+//                ", Registration number: "+ getBookRegistration().getRegistrationNumber();
+//    }
+
+
     @Override
     public String toString() {
-        return "Book " +
-                "bookId= " + bookId +
-                ", title= '" + title + '\'' +
-                ", ISBN=' " + ISBN + '\'';
+        return "Book{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", ISBN='" + ISBN + '\'' +
+                ", bookRegistration=" + bookRegistration.getRegistrationNumber() +
+                '}';
     }
-
-
 
     public String getId() {
         return id;
@@ -115,5 +130,4 @@ public class Book {
     public void setId(String id) {
         this.id = id;
     }
-
 }
