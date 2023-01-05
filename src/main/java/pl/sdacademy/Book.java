@@ -17,10 +17,11 @@ public class Book {
 
     @Column
     private String ISBN;
+    private String id;
 
 
     //konstruktory
-    public Book() {
+    public Book(String title, String warAndPeace, String leoTolstoy) {
     }
 
     public Book(String title, String ISBN, Publisher publisher) {
@@ -106,7 +107,11 @@ public class Book {
     }
 
 
+    public String getId() {
+        return id;
+    }
 
-
-
+    public void setId(String id) {
+        this.id = id;
+    }
 }
