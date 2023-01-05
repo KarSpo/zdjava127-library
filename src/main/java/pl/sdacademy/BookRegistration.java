@@ -3,9 +3,10 @@ package pl.sdacademy;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name="book_registration")
 public class BookRegistration {
 
     @Id
@@ -19,21 +20,24 @@ public class BookRegistration {
     @Column
     private LocalDate borrowDate;
 
-    public BookRegistration(String registrationNumber, LocalDate borrowDate, Book book, Reader reader) {
+    public BookRegistration(String registrationNumber, LocalDate borrowDate,  Reader reader) {
         this.registrationNumber = registrationNumber;
         this.borrowDate = borrowDate;
-        this.book = book;
+
         this.reader = reader;
     }
     public BookRegistration(){};
 
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "book_id")
-    private Book book;
+    //    @OneToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "book")
+//    private Book book;
+    @OneToMany(mappedBy = "bookRegistration")
+    private List<Book> books;
+
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "reader_id")
+    @JoinColumn(name = "reader")
     private Reader reader;
 
     public Integer getBookRecordId() {
@@ -60,13 +64,9 @@ public class BookRegistration {
         this.borrowDate = borrowDate;
     }
 
-    public Book getBook() {
-        return book;
-    }
 
-    public void setBook(Book book) {
-        this.book = book;
-    }
+
+
 
     public Reader getReader() {
         return reader;
@@ -82,7 +82,7 @@ public class BookRegistration {
                 "bookRecordId= " + bookRecordId +
                 ", registrationNumber= '" + registrationNumber + '\'' +
                 ", borrowDate= " + borrowDate +
-                ", book= " + book +
+
                 ", reader= " + reader;
     }
 }
