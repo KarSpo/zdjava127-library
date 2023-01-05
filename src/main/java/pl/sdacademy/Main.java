@@ -4,7 +4,6 @@ package pl.sdacademy;
 
 import javax.persistence.EntityManager;
 import java.util.Scanner;
-=======
 import pl.sdacademy.bookDaoInterface.AuthorInterface;
 import pl.sdacademy.bookDaoInterface.AuthorInterfaceImpl;
 import pl.sdacademy.ui.ConsoleInterface;
