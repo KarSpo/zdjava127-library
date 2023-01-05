@@ -1,4 +1,10 @@
 use library_school;
+
+CREATE TABLE publisher (
+  publisher_id  INT AUTO_INCREMENT NOT NULL,
+  name          VARCHAR(100) NOT NULL,
+  PRIMARY KEY (publisher_id));
+
 CREATE TABLE book (
   book_id       INT AUTO_INCREMENT NOT NULL,
   title         VARCHAR(100) NOT NULL,
@@ -8,18 +14,11 @@ CREATE TABLE book (
   FOREIGN KEY (publisher_id) REFERENCES library_school.publisher(publisher_id)
   );
 
-
   CREATE TABLE author (
   author_id     INT AUTO_INCREMENT NOT NULL,
   first_name    VARCHAR(100) NOT NULL,
   last_name     VARCHAR(100) NOT NULL,
   PRIMARY KEY(author_id));
-
-
-  CREATE TABLE publisher (
-  publisher_id  INT AUTO_INCREMENT NOT NULL,
-  name          VARCHAR(100) NOT NULL,
-  PRIMARY KEY (publisher_id));
 
   CREATE TABLE reader (
   reader_id        INT NOT NULL AUTO_INCREMENT,
